@@ -54,6 +54,7 @@ export default function Input({ label, error, isPassword, containerStyle, style,
           onFocus={handleFocus}
           onBlur={handleBlur}
           secureTextEntry={isPassword && !showPassword}
+          textAlignVertical={props.multiline ? 'top' : 'center'}
           {...props}
         />
         {isPassword && (
@@ -87,14 +88,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: scale(8),
     backgroundColor: colors.white,
-    height: verticalScale(50),
     paddingHorizontal: scale(14),
+    minHeight: verticalScale(50),
   },
   input: {
     flex: 1,
     fontSize: scale(15),
     color: colors.text,
-    height: '100%',
+    paddingVertical: verticalScale(10),
   },
   eyeIcon: {
     padding: scale(4),

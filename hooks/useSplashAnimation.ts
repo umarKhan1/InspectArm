@@ -25,7 +25,8 @@ export function useSplashAnimation() {
 
     // Cleanup timer if component unmounts
     return () => clearTimeout(timer);
-  }, [isLoggedIn, router, scale, opacity]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn]);
 
   // Create the animated style object
   const animatedStyle = useAnimatedStyle(() => {

@@ -7,31 +7,32 @@ import CountryPicker from 'react-native-country-picker-modal';
 import { colors } from '@/constants/colors';
 import { scale, verticalScale, wp } from '@/utils/responsive';
 import { Button, Input } from '@/shared/ui';
-import { useSignup } from '@/hooks/auth/useSignup';
+import { useSignup } from '@/components/auth/signup/useSignup';
+import { signupStyles as styles } from '@/styles/auth/auth-style';
 
 export default function SignupScreen() {
-  const { 
-    control, 
-    errors, 
-    isSubmitting, 
-    countryCode, 
-    callingCode, 
-    onCountrySelect, 
-    onSubmit, 
-    router 
+  const {
+    control,
+    errors,
+    isSubmitting,
+    countryCode,
+    callingCode,
+    onCountrySelect,
+    onSubmit,
+    router
   } = useSignup();
 
   return (
-    <KeyboardAvoidingView 
-      style={styles.container} 
+    <KeyboardAvoidingView
+      style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        
+
         {/* Logo */}
         <Animated.View entering={FadeInDown.duration(600).delay(100)} style={styles.logoContainer}>
-          <Image 
-            source={require('../../../assets/images/splash-icon.png')} 
+          <Image
+            source={require('../../../assets/images/splash-icon.png')}
             style={styles.logo}
             contentFit="contain"
           />
@@ -45,7 +46,7 @@ export default function SignupScreen() {
 
         {/* Form Fields */}
         <Animated.View entering={FadeInDown.duration(600).delay(300)} style={styles.formContainer}>
-          
+
           <View style={styles.row}>
             <Controller
               control={control}
@@ -155,6 +156,9 @@ export default function SignupScreen() {
                 onChangeText={onChange}
                 value={value}
                 error={errors.password?.message}
+                textContentType="oneTimeCode"
+                autoComplete="off"
+                style={{ backgroundColor: colors.white }}
               />
             )}
           />
@@ -171,6 +175,9 @@ export default function SignupScreen() {
                 onChangeText={onChange}
                 value={value}
                 error={errors.confirmPassword?.message}
+                textContentType="oneTimeCode"
+                autoComplete="off"
+                style={{ backgroundColor: colors.white }}
               />
             )}
           />
@@ -179,124 +186,25 @@ export default function SignupScreen() {
 
         {/* Button */}
         <Animated.View entering={FadeInDown.duration(600).delay(400)} style={styles.buttonContainer}>
-          <Button 
-            title="Sign Up" 
-            onPress={onSubmit} 
-            isLoading={isSubmitting} 
+          <Button
+            title="Sign Up"
+            onPress={onSubmit}
+            isLoading={isSubmitting}
           />
         </Animated.View>
 
-      </ScrollView>
+        {/* Footer Text - Moved inside ScrollView */}
+        <Animated.View entering={FadeInDown.duration(600).delay(500)} style={styles.footerContainer}>
+          <Text style={styles.footerText}>
+            Already have an account?{' '}
+          </Text>
+          <Pressable onPress={() => router.push('/auth/login')}>
+            <Text style={styles.signUpText}>Login</Text>
+          </Pressable>
+        </Animated.View>
 
-      {/* Footer Text */}
-      <Animated.View entering={FadeInDown.duration(600).delay(500)} style={styles.footerContainer}>
-        <Text style={styles.footerText}>
-          Already have an account?{' '}
-        </Text>
-        <Pressable onPress={() => router.push('/auth/login')}>
-          <Text style={styles.signUpText}>Login</Text>
-        </Pressable>
-      </Animated.View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.white,
-  },
-  scrollContent: {
-    flexGrow: 1,
-    paddingHorizontal: wp(6),
-    paddingTop: verticalScale(60),
-    paddingBottom: verticalScale(30),
-  },
-  logoContainer: {
-    alignItems: 'center',
-    marginBottom: verticalScale(30),
-  },
-  logo: {
-    width: scale(50),
-    height: scale(50),
-  },
-  title: {
-    fontSize: scale(32),
-    fontWeight: '700',
-    color: colors.text,
-    marginBottom: verticalScale(8),
-    lineHeight: scale(40),
-  },
-  subtitle: {
-    fontSize: scale(14),
-    color: colors.textLight,
-    marginBottom: verticalScale(30),
-  },
-  formContainer: {
-    marginBottom: verticalScale(20),
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  halfInput: {
-    width: '48%',
-  },
-  phoneWrapper: {
-    marginBottom: verticalScale(16),
-  },
-  label: {
-    fontSize: scale(14),
-    color: colors.text,
-    marginBottom: verticalScale(6),
-    fontWeight: '500',
-  },
-  customPhoneContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: verticalScale(50),
-    borderWidth: 1,
-    borderColor: colors.border,
-    borderRadius: scale(8),
-    backgroundColor: colors.white,
-    paddingHorizontal: scale(14),
-  },
-  countryPickerButton: {
-    marginRight: scale(4),
-  },
-  callingCodeText: {
-    fontSize: scale(15),
-    color: colors.text,
-    marginRight: scale(8),
-    fontWeight: '500',
-  },
-  phoneTextInput: {
-    flex: 1,
-    fontSize: scale(15),
-    color: colors.text,
-    height: '100%',
-  },
-  errorText: {
-    fontSize: scale(12),
-    color: colors.red,
-    marginTop: verticalScale(4),
-  },
-  buttonContainer: {
-    marginTop: verticalScale(10),
-  },
-  footerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: Platform.OS === 'ios' ? verticalScale(40) : verticalScale(20),
-  },
-  footerText: {
-    fontSize: scale(14),
-    color: colors.textLight,
-  },
-  signUpText: {
-    fontSize: scale(14),
-    color: colors.primary,
-    fontWeight: '600',
-  },
-});
