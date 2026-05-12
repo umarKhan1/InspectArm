@@ -33,7 +33,8 @@ export default function Step3({ onNext }: Step3Props) {
               name="state"
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input
-                  label="State / Province *"
+                  label="State / Province"
+                  required
                   placeholder="Select State"
                   onBlur={onBlur}
                   onChangeText={onChange}
@@ -48,7 +49,8 @@ export default function Step3({ onNext }: Step3Props) {
               name="city"
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input
-                  label="City *"
+                  label="City"
+                  required
                   placeholder="New York City"
                   onBlur={onBlur}
                   onChangeText={onChange}
@@ -66,7 +68,8 @@ export default function Step3({ onNext }: Step3Props) {
               name="zipCode"
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input
-                  label="ZIP / Postal Code *"
+                  label="ZIP / Postal Code"
+                  required
                   placeholder="10001"
                   onBlur={onBlur}
                   onChangeText={onChange}
@@ -82,7 +85,8 @@ export default function Step3({ onNext }: Step3Props) {
               name="addressLine1"
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input
-                  label="Address Line 1 *"
+                  label="Address Line 1"
+                  required
                   placeholder="123 Main Street"
                   onBlur={onBlur}
                   onChangeText={onChange}
@@ -114,7 +118,6 @@ export default function Step3({ onNext }: Step3Props) {
           <Button
             title="Next Step"
             onPress={handleSubmit}
-            disabled={!isValid}
           />
         </View>
       </ScrollView>

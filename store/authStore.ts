@@ -20,8 +20,9 @@ interface OnboardingData {
 
 interface AuthState {
   isLoggedIn: boolean;
+  email?: string;
   onboardingData: OnboardingData;
-  login: () => void;
+  login: (email?: string) => void;
   logout: () => void;
   updateOnboardingData: (data: Partial<OnboardingData>) => void;
   resetOnboardingData: () => void;
@@ -29,9 +30,10 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>((set) => ({
   isLoggedIn: false,
+  email: undefined,
   onboardingData: {},
-  login: () => set({ isLoggedIn: true }),
-  logout: () => set({ isLoggedIn: false, onboardingData: {} }),
+  login: (email) => set({ isLoggedIn: true, email }),
+  logout: () => set({ isLoggedIn: false, onboardingData: {}, email: undefined }),
   updateOnboardingData: (data) => 
     set((state) => ({ 
       onboardingData: { ...state.onboardingData, ...data } 

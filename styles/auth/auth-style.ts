@@ -16,10 +16,11 @@ export const forgetPasswordStyles = StyleSheet.create({
     },
     logoContainer: {
         alignItems: 'center',
-        marginBottom: verticalScale(30),
+        marginTop: verticalScale(30),
+        marginBottom: verticalScale(40),
     },
     logo: {
-        width: scale(50),
+        width: scale(180),
         height: scale(50),
     },
     title: {
@@ -57,7 +58,7 @@ export const forgetPasswordStyles = StyleSheet.create({
     },
 });
 
-// login styles for login screen start here
+// ** <==============  login styles start here  ===============> **/
 export const loginStyles = StyleSheet.create({
     container: {
         flex: 1,
@@ -71,10 +72,11 @@ export const loginStyles = StyleSheet.create({
     },
     logoContainer: {
         alignItems: 'center',
-        marginBottom: verticalScale(20),
+        marginTop: verticalScale(30),
+        marginBottom: verticalScale(40),
     },
     logo: {
-        width: scale(50),
+        width: scale(180),
         height: scale(50),
     },
     title: {
@@ -138,10 +140,11 @@ export const signupStyles = StyleSheet.create({
     },
     logoContainer: {
         alignItems: 'center',
-        marginBottom: verticalScale(20),
+        marginTop: verticalScale(30),
+        marginBottom: verticalScale(40),
     },
     logo: {
-        width: scale(50),
+        width: scale(180),
         height: scale(50),
     },
     title: {

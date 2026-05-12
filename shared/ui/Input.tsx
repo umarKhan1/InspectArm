@@ -9,10 +9,11 @@ interface InputProps extends TextInputProps {
   label: string;
   error?: string;
   isPassword?: boolean;
+  required?: boolean;
   containerStyle?: StyleProp<ViewStyle>;
 }
 
-export default function Input({ label, error, isPassword, containerStyle, style, ...props }: InputProps) {
+export default function Input({ label, error, isPassword, required, containerStyle, style, ...props }: InputProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   
@@ -39,14 +40,19 @@ export default function Input({ label, error, isPassword, containerStyle, style,
   React.useEffect(() => {
     if (error) {
       borderColor.value = withTiming(colors.red, { duration: 200 });
-    } else if (!isFocused) {
+    } else if (isFocused) {
+      borderColor.value = withTiming(colors.primary, { duration: 200 });
+    } else {
       borderColor.value = withTiming(colors.border, { duration: 200 });
     }
   }, [error, isFocused, borderColor]);
 
   return (
     <View style={[styles.container, containerStyle]}>
-      <Text style={styles.label}>{label}</Text>
+      <Text style={styles.label}>
+        {label}
+        {required && <Text style={{ color: colors.red }}> *</Text>}
+      </Text>
       <Animated.View style={[styles.inputContainer, animatedBorderStyle]}>
         <TextInput
           style={[styles.input, style]}

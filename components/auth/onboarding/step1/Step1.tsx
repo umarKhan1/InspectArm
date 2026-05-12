@@ -31,6 +31,7 @@ export default function Step1({ onNext }: Step1Props) {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 label="Company Name"
+                required
                 placeholder="e.g. InspectArm Solutions"
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -46,6 +47,7 @@ export default function Step1({ onNext }: Step1Props) {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 label="Registration Number"
+                required
                 placeholder="e.g. REG123456"
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -61,6 +63,7 @@ export default function Step1({ onNext }: Step1Props) {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 label="Industry"
+                required
                 placeholder="e.g. Home Inspection"
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -92,7 +95,6 @@ export default function Step1({ onNext }: Step1Props) {
           <Button
             title="Next Step"
             onPress={handleSubmit}
-            disabled={!isValid}
           />
         </View>
       </ScrollView>

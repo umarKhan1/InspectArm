@@ -45,6 +45,12 @@
       <key>NSAllowsLocalNetworking</key>
       <true/>
     </dict>
+    <key>NSCameraUsageDescription</key>
+    <string>The app needs access to your camera to let you take a photo of your company logo.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to access your microphone</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>The app needs access to your photos to let you upload a company logo.</string>
     <key>NSUserActivityTypes</key>
     <array>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
@@ -75,10 +81,6 @@
     </array>
     <key>UIUserInterfaceStyle</key>
     <string>Automatic</string>
-    <key>NSCameraUsageDescription</key>
-    <string>The app needs access to your camera to let you take a photo of your company logo.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>The app needs access to your photos to let you upload a company logo.</string>
     <key>UIViewControllerBasedStatusBarAppearance</key>
     <false/>
   </dict>

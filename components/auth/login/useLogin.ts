@@ -14,7 +14,7 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 export function useLogin() {
   const router = useRouter();
   const { login } = useAuthStore();
-  
+
   const {
     control,
     handleSubmit,
@@ -31,10 +31,10 @@ export function useLogin() {
     // API logic goes here
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log('Login Data:', data);
-    
+
     // Update global state
-    login();
-    
+    login(data.email);
+
     // Navigate to dashboard
     router.replace('/dashboard');
   };

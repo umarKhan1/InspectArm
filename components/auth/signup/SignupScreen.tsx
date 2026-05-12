@@ -54,6 +54,7 @@ export default function SignupScreen() {
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input
                   label="First Name"
+                  required
                   placeholder="Ava"
                   onBlur={onBlur}
                   onChangeText={onChange}
@@ -69,6 +70,7 @@ export default function SignupScreen() {
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input
                   label="Last Name"
+                  required
                   placeholder="Hughes"
                   onBlur={onBlur}
                   onChangeText={onChange}
@@ -86,6 +88,7 @@ export default function SignupScreen() {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 label="Company Name"
+                required
                 placeholder="Apex Home Inspections"
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -101,6 +104,7 @@ export default function SignupScreen() {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 label="Email"
+                required
                 placeholder="ava@apex.com"
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -117,7 +121,10 @@ export default function SignupScreen() {
             name="phone"
             render={({ field: { onChange, value } }) => (
               <View style={styles.phoneWrapper}>
-                <Text style={styles.label}>Phone Number</Text>
+                <Text style={styles.label}>
+                  Phone Number
+                  <Text style={{ color: colors.red }}> *</Text>
+                </Text>
                 <View style={[styles.customPhoneContainer, errors.phone && { borderColor: colors.red }]}>
                   <CountryPicker
                     countryCode={countryCode}
@@ -150,6 +157,7 @@ export default function SignupScreen() {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 label="Password"
+                required
                 placeholder="*******"
                 isPassword
                 onBlur={onBlur}
@@ -169,6 +177,7 @@ export default function SignupScreen() {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 label="Confirm Password"
+                required
                 placeholder="*******"
                 isPassword
                 onBlur={onBlur}
@@ -207,4 +216,3 @@ export default function SignupScreen() {
     </KeyboardAvoidingView>
   );
 }
-

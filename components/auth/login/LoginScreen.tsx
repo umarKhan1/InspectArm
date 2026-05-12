@@ -42,6 +42,7 @@ export default function LoginScreen() {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 label="Email"
+                required
                 placeholder="Loisbecket@gmail.com"
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -59,6 +60,7 @@ export default function LoginScreen() {
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 label="Password"
+                required
                 placeholder="*******"
                 isPassword
                 onBlur={onBlur}
@@ -97,4 +99,3 @@ export default function LoginScreen() {
     </KeyboardAvoidingView>
   );
 }
-
